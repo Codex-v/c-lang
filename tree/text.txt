@@ -1,0 +1,311 @@
+tree
+
+Terminolgy
+
+1 root -> topmost Node
+2 parent-> Node which connects to the child 
+3 child->Node which is by another node is child!
+4 leaf/External Node : last node with no children
+5 internal Node: Nodes with atleast on child
+6 Depth -> No of edges from root to the Node
+7 hegiht -> No of edges from node sto the depest leaf
+8 Siblings : Nodes belongs to the same parent know as Siblings
+9 Ancestors/descendents ->
+
+
+Binary tree
+
+Top most element is know as Root
+
+deg = node attact to the parent node 
+
+binary tree is a tree which has atmost two child for all the nodes
+
+
+hum do hamare doo <= 2
+
+1 Tree is made up of nodes & edges !
+2 n Nodes => n-1 edges
+3 Degree => no of direct children (for a node)
+4 Degree of a tree is the highest degree of a node among all the nodes present in the tree.
+5 Binary tree = Tree of degree <=2  Nodes can have 0,1 or 2 children
+
+
+
+Tree -> Non linear -> I
+
+Array,stack,queue,Linkedlist -> linear data structure
+
+Type of Binary Trees
+
+1 Full or strict binary tree
+
+    All Nodes have either 0 or 2 children
+
+2 prefect Binary Tree
+    internal nodes have 2 children + all leaf nodes are on same level
+
+
+3 Complete Binary Tree 
+    All levels are completely filled except possibly the last level + last level must have its keys as left as possible 
+
+4 Degenrate Tree
+    A Tree where all parent Node has excatly one child
+
+5 skeewd Tree
+
+    left side tree                                         right side tree
+    all children are at left                               all children are at right
+
+
+
+Representation of a binary Tree
+
+1 Array Representation  -> Tree will be limited  
+2 Linked Representation -> Using this the Tree can be extended at any time
+
+
+
+Linear Data structure : front to rear || rear to front   -> Array
+
+
+
+Binary tree Traversal in a Binary Tree !
+
+1 PreOrder Traversal (root first)
+    root -> left subtree -> right subtree
+
+
+2 PostOrder Traversal (root at end)
+    left subtree -> right subtree -> root
+
+3 InOrder Traversal (root in between)
+    left subtree -> root -> right subtree
+
+# Binary Tree PreOrder Traversal (root first)
+
+root -> left subtree -> right subtree 
+
+Root ->   left  ->   right
+
+4 -> 1[5][2] -> 6[][]
+
+preOrder (Node * root)
+{
+    if(root != NULL)
+        printf(%d,"root->data");
+}
+
+
+postOrder (left -> right -> root)
+
+left subtree -> right subtree -> root Node
+
+
+pseudocode
+
+void postOrder(Node *root)
+{
+    if(root != NULL)
+    {
+        postOrder(root->left)
+        postOrder(root->right)
+        printf("data : %d\n",root->data)
+
+
+    }
+}
+
+#InOrder Traversal
+
+left -> root -> right
+
+pseudocode
+
+void InOrder(Node *root)
+{
+    if(root != NULL)
+    {
+        inOrder(root->left)
+        printf(%d,root->data)
+        inOrder(root->right)
+    }
+}
+
+
+
+Trick to find Inorder, preOrder & PostOrder Traversal
+
+                  7            preOrder = 7 2 0 4 1
+                /  \           PostOrder = 0 4 2 1 7
+                2   1          InOrder = 0 2 4 7 1
+                /\
+                0 4
+
+Binary Search Tree
+
+1 It is a type of Binary Tree 
+
+properties of binary Search Tree
+
+1 All nodes of the left subtree are lesser (values || Data)
+2 All nodes of the right subtree are greater (values || Data)
+3 left & Right subtree are also Binary Search Tree 
+4 There are no duplicates nodes
+5 InOrder Traversal of a binary serach tree gives an ascending sorted Array
+
+Searching in a Binary Search Tree
+
+pseudocode for Searching in a BST!
+
+Node * Search(Node *root,int key)
+{
+    if(root == NULL)
+        return NULL;
+    if(root->data == key)
+        return root;
+    else if(root->data > key)
+    {
+        return Search(root->left,key);
+    }
+    else
+    {
+        return Search(root->right,key);
+    }
+
+}
+
+Insertion in a binary search Tree
+
+In BST -> No duplicates are allowed
+
+allocate dynamic memeory 
+-> search the key in the BST
+-> find the postion to insert the key
+->  need extra pointer to connect
+-> 
+
+pseducode
+
+void insert(Node * root,int key)
+{
+    Node * prev = NULL
+    Node *newNode;
+    while(root != NULL)
+    {
+        prev = root;
+        if(key == root->data)
+            printf("key is already avaiabled");
+        else if(key<root->data)
+        {
+            root = root->left;
+        }
+        else
+        {
+            root = root->right;
+        }
+
+    }
+
+    Node * newNode = Nodecreation(key);
+    if(key < prev->data)
+    {
+        prev->left = newNode;
+    }
+    else
+    {
+        prev->right = newNode;
+    }
+
+
+
+}
+
+
+
+# deletion in Binary Search Tree
+
+case 1 The Node is a leaf Node
+case 2 The Node is a non leaf Node
+case 3 The Node is the root Node
+
+
+#case 1 
+
+step 1 Search the Node
+Step 2 Delete the Node
+
+# Case 2
+
+deleted node can be replaced by the inOrder pre node or Inorder post node 
+
+check weather the key is greter to lesser
+
+Then determine where to replace 
+
+
+
+# case 3 Node in between BST
+ 
+step 1 -> Search for the Node 
+step 2 -> search for inOrder pre & inOrder post 
+setp 3 -> Keep doing this until the tree has no empty nodes 
+
+
+
+C code for deletion 
+Node *inOrderPredecessor(Node * root)
+{
+    root = root->left;
+    while(root->right != NULL)
+    {
+        root = root->right;
+    }
+    return root;
+}
+
+
+Node *deleteNode(Node * root,int value)
+{   Node * iPre;
+    if(root == NULL)
+        return NULL;
+    if(root->left = NULL && root->right == NULL)
+    {
+        free(root);
+        return NULL;
+    }
+    // Search for the node to be deleted 
+
+    if(value < root->data)
+    {
+        deleteNode(root->left,value);
+    }
+    else if(root->data < vlaue)
+    {
+        deleteNode(root->right,value);
+    }
+    //Deletion logic
+    else
+    {
+        iPre = inOrderPredecessor(root);
+        root->data = iPre->data;
+        root->left = deleteNode(root->left,iPre->data);
+
+
+    }
+
+    return root;
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
