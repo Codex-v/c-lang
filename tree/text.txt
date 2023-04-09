@@ -2,7 +2,7 @@ tree
 
 Terminolgy
 
-1 root -> topmost Node
+1 root -> topmost Node 
 2 parent-> Node which connects to the child 
 3 child->Node which is by another node is child!
 4 leaf/External Node : last node with no children
@@ -11,6 +11,13 @@ Terminolgy
 7 hegiht -> No of edges from node sto the depest leaf
 8 Siblings : Nodes belongs to the same parent know as Siblings
 9 Ancestors/descendents ->
+
+
+        6
+        /\
+        8 10
+        /
+        7
 
 
 Binary tree
@@ -22,7 +29,7 @@ deg = node attact to the parent node
 binary tree is a tree which has atmost two child for all the nodes
 
 
-hum do hamare doo <= 2
+hum do hamare doo <= 2 
 
 1 Tree is made up of nodes & edges !
 2 n Nodes => n-1 edges
@@ -34,7 +41,7 @@ hum do hamare doo <= 2
 
 Tree -> Non linear -> I
 
-Array,stack,queue,Linkedlist -> linear data structure
+Array,stack,queue,Linkedlist -> linear data structure 
 
 Type of Binary Trees
 
@@ -90,11 +97,20 @@ Root ->   left  ->   right
 
 4 -> 1[5][2] -> 6[][]
 
-preOrder (Node * root)
+
+
+void preOrder (Node * root)
 {
     if(root != NULL)
-        printf(%d,"root->data");
+    {
+        printf("%d",root->data);
+        
+
+    }
 }
+
+
+
 
 
 postOrder (left -> right -> root)
@@ -152,7 +168,7 @@ properties of binary Search Tree
 2 All nodes of the right subtree are greater (values || Data)
 3 left & Right subtree are also Binary Search Tree 
 4 There are no duplicates nodes
-5 InOrder Traversal of a binary serach tree gives an ascending sorted Array
+5 InOrder Traversal of a binary serach tree gives an ascending sorted Array 
 
 Searching in a Binary Search Tree
 
@@ -298,6 +314,18 @@ Node *deleteNode(Node * root,int value)
 
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

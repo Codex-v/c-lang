@@ -1,4 +1,33 @@
-Time complexity
+#Time complexity
 
 realtion betweeen input size & running time (operations)
+
+1 - best case _n_(1)
+2 - Average case O(n+1/2)
+3 - worst Case O(n)
+
+# Space Complexity
+
+case 1 for(int i = 0;i<n;i++)    i = nth time j = nth time 
+
+
+case 2 for(int i = 0;i<n;i++)    i = nth time j = nth time 
+    for(int j = 0;j<n;j++)
+      for(int j = 0;j<n;j++)  O(n^2)
+
+case 3 
+n = 8
+
+m = 10
+for(int i = 0;i<m;i++)    i = mth time
+
+    for(int i = 0;i<n;i++)    i = nth time 
+
+
+
+case 4 
+
+n = 16 m = 3
+for(int i = 0;i<n;i++)   O(n) 
+for(int i = 0;i<m;i++)    
 

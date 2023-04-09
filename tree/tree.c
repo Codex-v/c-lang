@@ -35,17 +35,15 @@ void preOrder(Node *root)
 
 }
 
-void postOrder(Node *root)
+void postOrder(Node * root)
 {
     if(root!=NULL)
     {
         postOrder(root->left);
         postOrder(root->right);
-        printf("Data : %d\t",root->data);
-        
+        printf("%d\t",root->data);
     }
     return;
-
 }
 
 void inOrder(Node *root)
@@ -94,74 +92,74 @@ int isBST(Node *root)
 
 }
 
-Node * search(Node *root,int key)
-{
-    if(root == NULL)
-        return NULL;
-    if(root->data == key)
-        return root;
-    else if(key<root->data)
-    {
-        return search(root->left,key);
-    }
-    else
-    {
-        return search(root->right,key);
-    }
-}
+// Node * search(Node *root,int key)
+// {
+//     if(root == NULL)
+//         return NULL;
+//     if(root->data == key)
+//         return root;
+//     else if(key<root->data)
+//     {
+//         return search(root->left,key);
+//     }
+//     else
+//     {
+//         return search(root->right,key);
+//     }
+// }
 
-Node * SearchIter(Node * root,int key)
-{
-    while (root !=NULL)
-    {
-    if(key == root->data)
-        return root;
-    else if(key<root->data)
-    {
-        root  = root->left;
+// Node * SearchIter(Node * root,int key)
+// {
+//     while (root !=NULL)
+//     {
+//     if(key == root->data)
+//         return root;
+//     else if(key<root->data)
+//     {
+//         root  = root->left;
         
-    }
-    else
-    {
-        root = root->right;
-    }
+//     }
+//     else
+//     {
+//         root = root->right;
+//     }
 
-    }
-    return NULL;
+//     }
+//     return NULL;
     
 
-}
+// }
 
-Node * insertion(Node * root,int key)
+// Node * insertion(Node * root,int key)
 
-{   Node * prev = NULL;
-    Node * newNode;
-    while (root!= NULL)
-    {   
-        prev = root;
-        if(root->data == key)
-            printf("cannot insert key is avaiable");
-            return;
-        else if(key<root->data)
-        {
-            root = root->left;
-        }
-        else
-        {
-            root = root->right;
-        }
-    }
-    newNode = Nodecreation(key);
-    if(prev->data > key)
-    {
-        prev->right = newNode;
-    }
-    else
-    {
-        prev->left = newNode;
-    }
+// {   Node * prev = NULL;
+//     Node * newNode;
+//     while (root!= NULL)
+//     {   
+//         prev = root;
+//         if(root->data == key)
+//             printf("cannot insert key is avaiable");
+//             return;
+//         else if(key<root->data)
+//         {
+//             root = root->left;
+//         }
+//         else
+//         {
+//             root = root->right;
+//         }
+//     }
+//     newNode = Nodecreation(key);
+//     if(prev->data > key)
+//     {
+//         prev->right = newNode;
+//     }
+//     else
+//     {
+//         prev->left = newNode;
+//     }
 
-}
+// }
 
 
 /*
@@ -215,27 +213,59 @@ void insert(Node * root,int key)
 
 
 
-
 */
 
 void main()
 {
-    Node *root = Nodecreation(5);
-    Node *pL = Nodecreation(3);
-    Node *pR = Nodecreation(6);
-    Node *ppL = Nodecreation(1);
-    Node *ppR = Nodecreation(4);
+    Node * root = Nodecreation(45);
+    Node * p1 = Nodecreation(15);
+    Node * p2 = Nodecreation(79);
+    Node * c1_1 = Nodecreation(10);
+    Node * c1_2 = Nodecreation(20);
+    Node * c1_3 = Nodecreation(12);
+    Node * c2_1 = Nodecreation(55);
+    Node * c2_2 = Nodecreation(90);
+    Node * c2_2_1 = Nodecreation(50);
 
-    root->left = pL;
-    root->right = pR;
-    pL->left = ppL;
-    pL->right = ppR;
+    root->left = p1;
+    root->right = p2;
+    p1->left = c1_1;
+    p1->right = c1_2;
+    c1_2->left = c1_3;
+    p2->left = c2_1;
+    p2->right = c2_2;
+    c2_2->left = c2_2_1;
+
+
+
+    
+
+// preOrder(root);
+inOrder(root);
+
+
+// 45, 15, 79, 90, 10, 55, 12, 20, 50
+
+// 10 12 15 20 45 50 79 90
+
+/*
+      45
+    /   \
+   15   79    
+   /\    /\ 
+  10 20  55 90
+     /      /
+     12       50
+  
+
+*/
+
 
 
     // inOrder(root);
     // printf("%d",isBST(root));
-    Node * element = SearchIter(root,6);
-    printf("address of the pointer %d",element);
+    // Node * element = SearchIter(root,6);
+    // printf("address of the pointer %d",element);
 
 
 }
